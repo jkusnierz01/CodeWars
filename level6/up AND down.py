@@ -74,3 +74,26 @@ def basics():
     testing(arrange("way the my wall them him"), "way THE my WALL him THEM")  # 1
     testing(arrange("turn know great-aunts aunt look A to back"), "turn GREAT-AUNTS know AUNT a LOOK to BACK")  # 2
 basics()
+
+
+
+"""
+PROPER SOLUTION:
+
+
+def arrange(strng):
+    words = strng.split() #dzielimy na wyrazy
+    for i in range(len(words)):
+        words[i:i+2] = sorted(words[i:i+2], key=len, reverse=i%2)
+        words[i] = words[i].upper() if i%2 else words[i].lower()
+    return ' '.join(words)
+    
+    sorted(iterable, key=key, reverse=reverse):
+        * iterable -  Required. The sequence to sort, list, dictionary, tuple etc.
+        * key - Optional. A Function to execute to decide the order. Default is None
+        * reverse - Optional. A Boolean. False will sort ascending, True will sort descending. Default is False
+    
+    
+    words[i:i+2] - dla i = 0, mamy words[0:2] co daje element pierwszy i drugi
+    reverse=i%2 - dla l.parzystych i 0 mamy false bo reszta wynosi 0 a dla nieparzystych mamy true
+"""
